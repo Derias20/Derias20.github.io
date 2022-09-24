@@ -12,6 +12,8 @@
     padding: 20px;
     width: 200px;
     height: 150px;
+    position: absolute;
+    transform: translateX(-50%);
 }
 
 .text {
