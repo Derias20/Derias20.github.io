@@ -1,25 +1,179 @@
-#gradient {
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&display=swap');
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #1C1C1E;
+    color: white;
+    font-family: 'JetBrains Mono';
     min-height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: black;
-    background-image: linear-gradient(180deg,rgb(231, 231, 231), rgba(10, 233, 214, 0.911));
-}
-.div {
-    border-radius: 15px;
-    background: #3b3b3a;
-    padding: 20px;
-    width: 200px;
-    height: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* This is for footer animation */
 }
 
-.text {
-    padding: 20px 20px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 1400px;
+    width: 100%;
+}
+
+main > * {
+    margin: 0 6%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.container.lined {
+    border-left: 2px solid #1251F3;
+    padding-left: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+
+h1, h2, p {
+    margin: 5px;
+    padding: 0;
+}
+
+h2 {
+    font-size: 1.125rem;
+    letter-spacing: 5px;
+    font-weight: 800;
+    color: #CAC2C2;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+
+h1 > span { 
+    color: #1251F3; 
+}
+
+p { 
+    color: #767474; 
+}
+
+.container.fox { position: relative; }
+
+img { filter: brightness(80%) saturate(46%) contrast(124%); }
+
+#fox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(28, 28, 30, 0.29) 0%, #1C1C1E 100%);
+    z-index: 1;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 400px;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 5;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    height: 50%;
+    transform: perspective(100px) rotateX(20deg);
+    background-color: #18181A;
+}
+
+footer a {
+    color: #CAC2C2;
+    text-decoration: none;
+}
+
+#discord { border-bottom: 2px solid #5865F2; }
+#github { border-bottom: 2px solid #24292F; }
+#reddit { border-bottom: 2px solid #FF4500; }
+a:hover { color: white; }
+
+.popup {
+    position: absolute;
+    padding: 10px;
+    background-color: #18181A;
+}
+
+.popup::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    border: 10px solid transparent;
+    border-top-color: #18181A;
+}
+
+.animate-me {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.animate-me.left {
+    transform: translateX(-10%);
+}
+
+.animate-me.left.visible {
+    transform: translateX(0);
+}
+
+.animate-me.right {
+    transform: translateX(10%);
+}
+
+.animate-me.right.visible {
+    transform: translateX(0);
+}
+
+footer.animate-me.bottom { transform: translate(-50%, 50%); }
+footer.animate-me.bottom.visible { transform: translate(-50%, 0); }
+
+@media only screen and (max-width: 700px) {
+    .container.fox {
+        display: none;
+    }
+    footer::before {
+        width: 90%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%) perspective(100px) rotateX(20deg);
+    }
+
+    footer {
+        padding: 10px 0;
+    }
 }
